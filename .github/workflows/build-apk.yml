@@ -1,0 +1,99 @@
+name: Build Android APK
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'android/**'
+      - '.github/workflows/build-apk.yml'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Buildozer & dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            python3-pip \
+            build-essential \
+            git \
+            zip \
+            unzip \
+            openjdk-17-jdk \
+            autoconf \
+            libtool \
+            pkg-config \
+            zlib1g-dev \
+            libncurses5-dev \
+            libncursesw5-dev \
+            libtinfo5 \
+            cmake \
+            libffi-dev \
+            libssl-dev \
+            lld
+          pip install --upgrade pip
+          pip install buildozer cython==0.29.37
+
+      - name: Cache Buildozer files
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.buildozer
+            android/.buildozer
+          key: buildozer-${{ runner.os }}-${{ hashFiles('android/buildozer.spec') }}
+          restore-keys: |
+            buildozer-${{ runner.os }}-
+
+      - name: Build APK with Buildozer
+        working-directory: android
+        run: |
+          export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
+          buildozer android debug 2>&1 | tee build.log
+
+      - name: Upload APK artifact
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gaming-monitor-apk
+          path: android/bin/*.apk
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Create Release
+        if: success()
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v1.0.0
+          name: "🎮 Gaming Monitor v1.0.0"
+          body: |
+            ## Gaming Performance Monitor — Android
+
+            Real-time system performance overlay with **glassmorphism** UI.
+
+            ### Features
+            - ⚡ Real-time CPU & RAM monitoring
+            - 🌐 Network speed (download/upload)
+            - 🎨 iOS-style frosted glass design
+            - 🪶 Lightweight, minimal battery impact
+
+            ### Requirements
+            - Android 8.0+ (API 26)
+            - Allow "Install from unknown sources"
+
+            ### Install
+            1. Download `GamingMonitor-1.0.0-arm64-v8a-debug.apk`
+            2. Transfer to your Android device
+            3. Open and install
+          files: android/bin/*.apk
+          draft: true

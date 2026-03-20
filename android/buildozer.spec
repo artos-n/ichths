@@ -1,0 +1,20 @@
+[app]
+title = Gaming Monitor
+package.name = gamingmonitor
+package.domain = com.artos
+source.dir = .
+source.include_exts = py,png,jpg,kv,atlas,json
+version = 1.0.0
+requirements = python3,kivy,psutil,pillow
+orientation = portrait
+fullscreen = 0
+android.permissions = INTERNET,ACCESS_NETWORK_STATE,READ_PHONE_STATE
+android.api = 33
+android.minapi = 26
+android.ndk = 25b
+android.accept_sdk_license = True
+android.archs = arm64-v8a, armeabi-v7a
+p4a.fork = kivy
+p4a.branch = develop
+icon.filename = assets/icon.png
+presplash.filename = assets/presplash.png
