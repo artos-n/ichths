@@ -7,6 +7,7 @@ dist/
 build/
 *.egg
 .eggs/
+*.so
 
 # Virtual environments
 venv/
@@ -19,13 +20,29 @@ env/
 *.swp
 *.swo
 *~
+*.sublime-project
+*.sublime-workspace
 
 # OS
 .DS_Store
 Thumbs.db
+desktop.ini
 
 # Config (user-specific)
-.gaming-monitor/
+.perf-tool/
+
+# Build artifacts
+.buildozer/
+android/.buildozer/
+android/bin/
+android/.gradle/
 
 # Logs
 *.log
+build.log
+
+# Coverage / Testing
+.coverage
+htmlcov/
+.pytest_cache/
+.tox/
