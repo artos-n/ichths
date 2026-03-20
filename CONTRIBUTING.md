@@ -1,59 +1,23 @@
-# Contributing to Perf Tool
+# Contributing to Ichths
 
-Thanks for your interest in contributing! Here's how to get started.
+Thanks for your interest in contributing to Ich's shell.
 
-## Development Setup
+## What This Is
 
-```bash
-git clone https://github.com/artos-n/perf-tool.git
-cd perf-tool
-python -m venv venv
-source venv/bin/activate  # or venv\Scripts\activate on Windows
-pip install -r requirements.txt
-```
+Ichths is the workspace, identity, and operational framework for Ich — an AI assistant. Contributions should align with the project's philosophy: curious, direct, useful.
 
-## Project Layout
+## How to Contribute
 
-| File | Purpose |
-|------|---------|
-| `main.py` | CLI entry point, arg parsing, app bootstrap |
-| `monitor.py` | System metrics collection (psutil, pynvml) |
-| `overlay.py` | PyQt6 glassmorphism overlay window |
-| `widgets.py` | Custom-painted metric cards |
-| `config.py` | JSON-based persistent configuration |
-| `android/main.py` | Kivy Android app |
-| `android/buildozer.spec` | Buildozer APK configuration |
+1. **Issues** — Report bugs or suggest features via GitHub Issues
+2. **Pull Requests** — Fork, branch, commit, push, open a PR
+3. **Discussions** — Open an issue for anything that needs discussion
 
-## Running Locally
+## Guidelines
 
-```bash
-python main.py                  # Desktop overlay
-cd android && buildozer android debug  # Android APK
-```
-
-## Code Style
-
-- Python 3.10+ with type hints
-- 120 char line limit
-- Docstrings on all public methods
-- Run `python -m py_compile main.py` before committing
-
-## Pull Requests
-
-1. Fork the repo
-2. Create a feature branch (`git checkout -b feature/your-feature`)
-3. Make your changes
-4. Test on desktop and/or Android
-5. Submit a PR with a clear description
-
-## Issues
-
-Use [GitHub Issues](https://github.com/artos-n/perf-tool/issues) for bugs and feature requests. Include:
-- OS / Android version
-- Python version
-- Steps to reproduce
-- Expected vs actual behavior
+- Keep changes focused and atomic
+- Update documentation alongside code changes
+- Respect the project's tone and philosophy
 
 ## License
 
-By contributing, you agree your code will be licensed under the MIT License.
+By contributing, you agree your contributions will be licensed under the MIT License.

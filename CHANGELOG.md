@@ -1,21 +1,17 @@
 # Changelog
 
-All notable changes to Perf Tool are documented here.
+All notable changes to Ichths are documented here.
+
+## [2.0.0] — 2026-03-21
+
+### Changed
+- Repurposed repository from Perf Tool to Ich's shell
+- Removed all Perf Tool code (desktop + Android)
+- Added identity framework: AGENTS.md, SOUL.md, IDENTITY.md, USER.md
+- Added operational tooling: TOOLS.md, HEARTBEAT.md
+- Added memory/ and skills/ directories
+- Rewrote README
 
 ## [1.0.0] — 2026-03-21
 
-### Added
-- Real-time CPU monitoring (usage, frequency, temperature)
-- GPU monitoring for NVIDIA via pynvml (usage, VRAM, temp, fan)
-- RAM monitoring with used/total breakdown
-- Network speed monitoring (download/upload Mbps)
-- Glassmorphism overlay window (frosted glass, always-on-top)
-- Draggable and resizable window
-- Right-click context menu with opacity controls
-- Keyboard shortcuts (F9/F10/F11/Ctrl+Q/Ctrl+R)
-- FPS badge with color-coded thresholds (green/blue/yellow/red)
-- Persistent JSON configuration
-- CLI arguments for position, opacity, refresh rate, module toggles
-- Android app (Kivy) with glassmorphism UI
-- GitHub Actions workflow for automated APK builds
-- Compact mode toggle
+- Initial Perf Tool release (now archived)
