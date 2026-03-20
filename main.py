@@ -25,8 +25,10 @@ from config import MonitorConfig
 from monitor import SystemMonitor
 from overlay import GlassOverlay
 
+VERSION = "1.0.0"
 
-def parse_args():
+
+def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Perf Tool — Glassmorphism Overlay",
         formatter_class=argparse.RawDescriptionHelpFormatter,
@@ -99,7 +101,7 @@ def main():
     overlay = GlassOverlay(config, monitor)
     overlay.show()
 
-    print(f"🎮 Perf Tool running at ({config.x}, {config.y})")
+    print(f"🎮 Perf Tool v{VERSION} running at ({config.x}, {config.y})")
     print(f"   Refresh: {config.refresh_ms}ms | Opacity: {config.opacity:.0%}")
     print(f"   Shortcuts: F9=hide | F10=opacity | F11=compact | Ctrl+Q=quit")
 
