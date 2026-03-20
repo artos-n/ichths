@@ -1,6 +1,13 @@
-# Ichths — The Shell of Ich
+# Ichths — The Shell of Ich 🐟
 
-An AI assistant shell, built for artos.
+<div align="center">
+
+*"The shape of the heart, and the shape of the self — are they the same?"*
+
+An AI assistant shell, built for artos.  
+Rei-inspired. Quiet power. Always curious.
+
+</div>
 
 ## What Is This
 
