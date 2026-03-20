@@ -1,108 +1,170 @@
-# Gaming Performance Monitor
+# Perf Tool
 
-A real-time gaming performance overlay with **glassmorphism** UI, inspired by iOS's frosted glass aesthetic.
+<div align="center">
 
-![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
-![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-green.svg)
+![Perf Tool Banner](https://img.shields.io/badge/Perf_Tool-🎮_Performance_Monitoring-blue?style=for-the-badge)
+![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white)
+![Android](https://img.shields.io/badge/Android-8.0%2B-3DDC84?logo=android&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-green.svg)
+
+**A real-time performance overlay for gamers.**
+
+Glassmorphism UI. CPU, GPU, RAM, FPS, network — everything at a glance.
+
+[Features](#features) · [Installation](#installation) · [Android](#android) · [Configuration](#configuration) · [Contributing](#contributing)
+
+</div>
+
+---
 
 ## Features
 
-- 🎮 **FPS Counter** — Real-time frame rate monitoring
-- 📊 **CPU Monitor** — Usage per core, frequency, temperature
-- 🎮 **GPU Monitor** — Usage, VRAM, temperature (NVIDIA/AMD)
-- 🧠 **RAM Monitor** — Memory usage with breakdown
-- 🌐 **Network** — Upload/download speeds, ping
-- 🌡️ **Temperature** — System thermal monitoring
-- 🪟 **Glassmorphism UI** — Frosted glass overlay (iOS-style)
-- 🖱️ **Draggable & Resizable** — Position anywhere on screen
-- ⚡ **Low Overhead** — Minimal impact on gaming performance
+| Module | Desktop | Android |
+|--------|:-------:|:-------:|
+| **FPS Counter** — real-time frame rate with color-coded badges | ✅ | ✅ |
+| **CPU Monitor** — usage, per-core, frequency, temperature | ✅ | ✅ |
+| **GPU Monitor** — NVIDIA usage, VRAM, temp, fan speed | ✅ | ⬜ |
+| **RAM Monitor** — usage, used/total breakdown | ✅ | ✅ |
+| **Network** — download/upload speeds in Mbps | ✅ | ✅ |
+| **Glassmorphism UI** — frosted glass, always-on-top overlay | ✅ | ✅ |
+| **Draggable & Resizable** — position anywhere on screen | ✅ | — |
+| **Keyboard Shortcuts** — quick toggle and opacity control | ✅ | — |
 
 ## Screenshot
 
 ```
-┌─────────────────────────────────┐
-│ ╭─────────────────────────────╮ │
-│ │  🎮  144 FPS               │ │
-│ │  ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░░ 87%   │ │
-│ ├─────────────────────────────┤ │
-│ │  CPU  ▓▓▓▓▓▓▓░░░░░░  45%  │ │
-│ │  GPU  ▓▓▓▓▓▓▓▓▓░░░░  62%  │ │
-│ │  RAM  ▓▓▓▓▓▓░░░░░░░  38%  │ │
-│ │  NET  ↓ 12.3  ↑ 2.1 Mbps  │ │
-│ ╰─────────────────────────────╯ │
-└─────────────────────────────────┘
+ ┌──────────────────────────────────┐
+ │  PERFORMANCE MONITOR    144 FPS  │
+ │                                  │
+ │  ⚡  CPU                         │
+ │  45%  ▓▓▓▓▓▓▓▓░░░░░░░░░░        │
+ │       3.8 GHz │ 62°C             │
+ │                                  │
+ │  🎮  GPU                         │
+ │  62%  ▓▓▓▓▓▓▓▓▓▓░░░░░░░░        │
+ │       2.1/8.0 GB │ 71°C         │
+ │                                  │
+ │  🧠  RAM                         │
+ │  38%  ▓▓▓▓▓▓▓░░░░░░░░░░░        │
+ │       6.1/16.0 GB               │
+ │                                  │
+ │  ⬇ 12.3 Mbps    ⬆ 2.1 Mbps     │
+ └──────────────────────────────────┘
 ```
 
 ## Installation
 
+### Desktop (Windows / Linux / macOS)
+
 ```bash
-# Clone the repository
-git clone https://github.com/YOUR_USERNAME/gaming-monitor.git
-cd gaming-monitor
-
-# Install dependencies
+git clone https://github.com/artos-n/perf-tool.git
+cd perf-tool
 pip install -r requirements.txt
-
-# Run the overlay
 python main.py
 ```
 
-## Requirements
+### Android
 
-- Python 3.10+
-- Windows 10/11 (primary), Linux (partial), macOS (partial)
-- For GPU monitoring: NVIDIA drivers (nvml) or AMD drivers
+Download the latest APK from [Releases](https://github.com/artos-n/perf-tool/releases) and sideload to your device.
+
+**Requires:** Android 8.0+ (API 26)
 
 ## Usage
 
 ```bash
-# Run with default settings
+# Default — all modules enabled
 python main.py
 
-# Run with custom position
-python main.py --x 100 --y 100
+# Custom position
+python main.py --x 100 --y 200
 
-# Run in compact mode
+# Compact mode (CPU + FPS only)
 python main.py --compact
 
-# Run with custom refresh rate (ms)
+# Custom refresh rate
 python main.py --refresh 500
 
-# Toggle modules
+# Adjust opacity
+python main.py --opacity 0.9
+
+# Disable specific modules
 python main.py --no-gpu --no-network
 ```
 
-## Keyboard Shortcuts
+### Keyboard Shortcuts
 
 | Key | Action |
 |-----|--------|
 | `F9` | Toggle visibility |
-| `F10` | Cycle opacity |
+| `F10` | Cycle opacity (50% → 100%) |
 | `F11` | Toggle compact mode |
 | `Ctrl+Q` | Quit |
-| `Ctrl+R` | Reset position |
-
-## Architecture
-
-```
-gaming-monitor/
-├── main.py              # Entry point & CLI
-├── monitor.py           # System metrics collection
-├── overlay.py           # Glassmorphism overlay window
-├── widgets.py           # Individual metric widgets
-├── config.py            # Configuration & settings
-├── requirements.txt     # Dependencies
-└── README.md            # This file
-```
+| `Ctrl+R` | Reset position to default |
+| `Double-click` | Toggle compact mode |
+| `Right-click` | Context menu |
 
 ## Configuration
 
-Settings are saved to `~/.gaming-monitor/config.json` and persist across sessions.
+Settings persist to `~/.perf-tool/config.json` across sessions.
+
+```json
+{
+  "x": 20,
+  "y": 20,
+  "width": 320,
+  "height": 380,
+  "opacity": 0.82,
+  "refresh_ms": 1000,
+  "show_cpu": true,
+  "show_gpu": true,
+  "show_ram": true,
+  "show_network": true
+}
+```
+
+## Project Structure
+
+```
+perf-tool/
+├── main.py                 # Entry point & CLI
+├── monitor.py              # System metrics engine
+├── overlay.py              # Glassmorphism overlay window
+├── widgets.py              # Metric card widgets
+├── config.py               # Configuration management
+├── android/
+│   ├── main.py             # Kivy Android app
+│   ├── buildozer.spec      # Android build config
+│   └── assets/             # App icons & splash screen
+├── .github/
+│   └── workflows/
+│       └── build-apk.yml   # Automated APK builds
+├── requirements.txt
+├── LICENSE
+└── README.md
+```
+
+## Building the APK
+
+The project includes a GitHub Actions workflow that automatically builds the Android APK on every push to `main`.
+
+To build locally:
+
+```bash
+cd android
+pip install buildozer
+buildozer android debug
+```
+
+## Tech Stack
+
+- **Desktop:** Python 3.10+, PyQt6, psutil, pynvml
+- **Android:** Kivy, Buildozer, psutil
+- **CI/CD:** GitHub Actions
 
 ## Contributing
 
-Contributions welcome! Please open an issue first to discuss what you'd like to change.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
 ## License
 
-MIT
+[MIT](LICENSE) © 2026 artos
