@@ -16,68 +16,30 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - name: Build APK
+        uses: ArtemSBulgakov/buildozer-action@v1
+        id: buildozer
         with:
-          python-version: '3.11'
+          workdir: android
+          buildozer_version: stable
 
-      - name: Install Buildozer & dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y \
-            python3-pip \
-            build-essential \
-            git \
-            zip \
-            unzip \
-            openjdk-17-jdk \
-            autoconf \
-            libtool \
-            pkg-config \
-            zlib1g-dev \
-            libncurses5-dev \
-            libncursesw5-dev \
-            libtinfo5 \
-            cmake \
-            libffi-dev \
-            libssl-dev \
-            lld
-          pip install --upgrade pip
-          pip install buildozer cython==0.29.37
-
-      - name: Cache Buildozer files
-        uses: actions/cache@v4
-        with:
-          path: |
-            ~/.buildozer
-            android/.buildozer
-          key: buildozer-${{ runner.os }}-${{ hashFiles('android/buildozer.spec') }}
-          restore-keys: |
-            buildozer-${{ runner.os }}-
-
-      - name: Build APK with Buildozer
-        working-directory: android
-        run: |
-          export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
-          buildozer android debug 2>&1 | tee build.log
-
-      - name: Upload APK artifact
+      - name: Upload APK to Artifacts
         if: success()
         uses: actions/upload-artifact@v4
         with:
           name: perf-tool-apk
-          path: android/bin/*.apk
+          path: ${{ steps.buildozer.outputs.filename }}
           if-no-files-found: error
           retention-days: 30
 
-      - name: Create Release
+      - name: Create GitHub Release
         if: success()
         uses: softprops/action-gh-release@v2
         with:
           tag_name: v1.0.0
           name: "Perf Tool v1.0.0"
           body: |
-            ## Perf Tool — Android
+            ## Perf Tool — Android APK
 
             Real-time performance overlay for gamers with **glassmorphism** UI.
 
@@ -89,11 +51,11 @@ jobs:
 
             ### Requirements
             - Android 8.0+ (API 26)
-            - Allow "Install from unknown sources"
+            - Enable "Install from unknown sources"
 
             ### Install
             1. Download the APK
             2. Transfer to your Android device
             3. Open and install
-          files: android/bin/*.apk
+          files: ${{ steps.buildozer.outputs.filename }}
           draft: true
