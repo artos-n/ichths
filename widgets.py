@@ -1,5 +1,5 @@
 """
-Gaming Performance Monitor — Glassmorphism Overlay Widget
+Perf Tool — Glassmorphism Overlay Widget
 Individual metric widgets rendered as frosted-glass cards.
 """
 from PyQt6.QtWidgets import QWidget, QVBoxLayout, QHBoxLayout, QLabel, QProgressBar

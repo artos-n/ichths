@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Gaming Performance Monitor — Entry Point
+Perf Tool — Entry Point
 
 A real-time glassmorphism performance overlay for gamers.
 Displays CPU, GPU, RAM, network, and FPS metrics in a
@@ -28,7 +28,7 @@ from overlay import GlassOverlay
 
 def parse_args():
     parser = argparse.ArgumentParser(
-        description="Gaming Performance Monitor — Glassmorphism Overlay",
+        description="Perf Tool — Glassmorphism Overlay",
         formatter_class=argparse.RawDescriptionHelpFormatter,
     )
     parser.add_argument("--x", type=int, help="Window X position")
@@ -83,7 +83,7 @@ def main():
 
     # Create Qt application
     app = QApplication(sys.argv)
-    app.setApplicationName("Gaming Monitor")
+    app.setApplicationName("Perf Tool")
     app.setQuitOnLastWindowClosed(True)
 
     # Set a clean default font
@@ -99,7 +99,7 @@ def main():
     overlay = GlassOverlay(config, monitor)
     overlay.show()
 
-    print(f"🎮 Gaming Monitor running at ({config.x}, {config.y})")
+    print(f"🎮 Perf Tool running at ({config.x}, {config.y})")
     print(f"   Refresh: {config.refresh_ms}ms | Opacity: {config.opacity:.0%}")
     print(f"   Shortcuts: F9=hide | F10=opacity | F11=compact | Ctrl+Q=quit")
 

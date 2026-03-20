@@ -1,5 +1,5 @@
 """
-Gaming Performance Monitor — System Metrics Collection Engine
+Perf Tool — System Metrics Collection Engine
 """
 import time
 import threading

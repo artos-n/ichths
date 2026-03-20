@@ -1,5 +1,5 @@
 """
-Gaming Performance Monitor — Main Glassmorphism Overlay
+Perf Tool — Main Glassmorphism Overlay
 A frosted-glass always-on-top performance overlay for gamers.
 """
 from PyQt6.QtWidgets import (

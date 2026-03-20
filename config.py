@@ -1,5 +1,5 @@
 """
-Gaming Performance Monitor — Configuration & Settings
+Perf Tool — Configuration & Settings
 """
 import json
 import os
@@ -8,7 +8,7 @@ from pathlib import Path
 from typing import Optional
 
 
-CONFIG_DIR = Path.home() / ".gaming-monitor"
+CONFIG_DIR = Path.home() / ".perf-tool"
 CONFIG_FILE = CONFIG_DIR / "config.json"
 
 

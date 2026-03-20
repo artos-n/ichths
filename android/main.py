@@ -1,5 +1,5 @@
 """
-Gaming Performance Monitor — Android (Kivy)
+Perf Tool — Android (Kivy)
 Glassmorphism-style performance overlay for Android gaming.
 """
 import os
@@ -421,13 +421,13 @@ class MonitorRoot(FloatLayout):
 
 # ─── App ─────────────────────────────────────────────────────────
 
-class GamingMonitorApp(App):
+class PerfToolApp(App):
 
     def build(self):
-        self.title = 'Gaming Monitor'
+        self.title = 'Perf Tool'
         root = MonitorRoot()
         return root
 
 
 if __name__ == '__main__':
-    GamingMonitorApp().run()
+    PerfToolApp().run()

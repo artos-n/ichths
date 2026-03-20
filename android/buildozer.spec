@@ -1,6 +1,6 @@
 [app]
-title = Gaming Monitor
-package.name = gamingmonitor
+title = Perf Tool
+package.name = perftool
 package.domain = com.artos
 source.dir = .
 source.include_exts = py,png,jpg,kv,atlas,json
